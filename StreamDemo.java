@@ -1,69 +1,77 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StreamDemo {
     public static void main(String[] args) {
-        // filter even Number
 
-        List<Integer> nums = new ArrayList<>(List.of(1,1,2,3,4,5,6,7,8,9));
-        // List<Integer> evenIntegers = nums.stream()
-        // .filter(x-> x % 2  == 0)
-        // .collect(Collectors.toList());
-        // evenIntegers.stream().forEach(System.out::print);
+        // Sample list of integers
+        List<Integer> nums = new ArrayList<>(List.of(1, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
-
-        //  Convert to upper case
-
+        // Sample list of strings
         List<String> names = List.of("alice", "bo", "carol");
-        // List<String> nameInUpperCase = names.stream()
-        //     .map(String::toUpperCase)
-        //     .collect(Collectors.toList());
-        // nameInUpperCase.forEach(System.out::print);
 
-        //  find first element
+        // 1. Filter even numbers
+        List<Integer> evenIntegers = nums.stream()
+            .filter(x -> x % 2 == 0)
+            .collect(Collectors.toList());
+        evenIntegers.forEach(System.out::print);
 
-        // String firstName = names.stream()
-        // .findFirst().get();
-        // System.out.println(firstName);
+        // 2. Convert names to uppercase
+        List<String> nameInUpperCase = names.stream()
+            .map(String::toUpperCase)
+            .collect(Collectors.toList());
+        nameInUpperCase.forEach(System.out::print);
 
-        //  remove duplicates
+        // 3. Find the first name in the list
+        String firstName = names.stream()
+            .findFirst()
+            .get();
+        System.out.println(firstName);
 
-        // List<Integer> uniquIntegers = nums.stream()
-        // .distinct()
-        // .collect(Collectors.toList());
-        // System.out.println(uniquIntegers);
+        // 4. Remove duplicates from the number list
+        List<Integer> uniqueIntegers = nums.stream()
+            .distinct()
+            .collect(Collectors.toList());
+        System.out.println(uniqueIntegers);
 
-        // sort in descending order
-        
-        // List<Integer> sortedIntegers = nums.stream()
-        // .sorted((a,b)->b-a)
-        // .distinct()
-        // .collect(Collectors.toList());
-        // System.out.println(sortedIntegers);
+        // 5. Sort numbers in descending order and remove duplicates
+        List<Integer> sortedIntegers = nums.stream()
+            .sorted((a, b) -> b - a)
+            .distinct()
+            .collect(Collectors.toList());
+        System.out.println(sortedIntegers);
 
-        // all elements greater then 5
+        // 6. Filter elements greater than 5
+        List<Integer> greaterThanFive = nums.stream()
+            .filter(x -> x > 5)
+            .toList();
+        System.out.println(greaterThanFive);
 
-        // List<Integer> greaIntegers = nums.stream()
-        // .filter(x-> x > 5)
-        // .toList();
-        // System.out.println(greaIntegers);
+        // 7. Filter names by length >= 3
+        List<String> filteredNames = names.stream()
+            .filter(x -> x.length() >= 3)
+            .toList();
+        System.out.println(filteredNames);
 
-     // filter name by length eg 3
+        // 8. Find the second largest number
+        int secondLargest = nums.stream()
+            .sorted((a, b) -> b - a)
+            .skip(1)
+            .findFirst()
+            .get();
+        System.out.println(secondLargest);
 
-    //    System.out.println(names.stream()
-    //    .filter(x->x.length() >= 3)
-    //    .toList());
+        // 9. Find the maximum element
+        int maxElement = nums.stream()
+            .max((a, b) -> a - b)
+            .get();
+        System.out.println(maxElement);
 
-    // find 2nd largest number
-
-    // int secondLargest = nums.stream()
-    // .sorted((a,b)->b-a)
-    // .skip(1)
-    // .findFirst()
-    // .get();
-    // System.out.println(secondLargest);
-
-    
-
+        // 10. Group names by their length
+        Map<Integer, List<String>> gMap = names.stream()
+            .collect(Collectors.groupingBy(x -> x.length()));
+        System.out.println(gMap);
     }
 }
