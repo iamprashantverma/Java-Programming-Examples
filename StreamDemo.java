@@ -19,6 +19,11 @@ public class StreamDemo {
             .collect(Collectors.toList());
         // nameInUpperCase.forEach(System.out::print);
 
+        //  find first element
+        String firstName = names.stream()
+        .findFirst().get();
+        // System.out.println(firstName);
+
 
 
 
