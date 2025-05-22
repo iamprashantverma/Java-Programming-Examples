@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class StreamDemo {
     public static void main(String[] args) {
@@ -73,5 +71,11 @@ public class StreamDemo {
         Map<Integer, List<String>> gMap = names.stream()
             .collect(Collectors.groupingBy(x -> x.length()));
         System.out.println(gMap);
+
+        // 11 Filter Names that start with 'c'
+        List<String> nList = names.stream()
+        .filter(x->x.startsWith("c"))
+        .toList();
+        System.out.println(nList);
     }
 }
