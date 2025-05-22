@@ -9,6 +9,18 @@ public class StreamDemo {
         List<Integer> evenIntegers = nums.stream()
         .filter(x-> x % 2  == 0)
         .collect(Collectors.toList());
-        evenIntegers.stream().forEach(System.out::print);
+        // evenIntegers.stream().forEach(System.out::print);
+
+
+        //  Convert to upper case
+        List<String> names = List.of("alice", "bob", "carol");
+        List<String> nameInUpperCase = names.stream()
+            .map(String::toUpperCase)
+            .collect(Collectors.toList());
+        // nameInUpperCase.forEach(System.out::print);
+
+
+
+
     }
 }
