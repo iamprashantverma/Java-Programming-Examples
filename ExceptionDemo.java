@@ -24,20 +24,20 @@ public class ExceptionDemo {
             throw new InvalidAgeException("Your age is below 18 not eligible for voting");
         System.out.println("Voted Successfully");
     }
-    public static void apply() {
+    public static void apply() throws InvalidGradesException {
         System.out.println("Enter Your CGPA: ");
         Scanner sc = new Scanner(System.in);
         float cgpa = sc.nextFloat();
-        try {
+        // try {
             if (cgpa < 7.5) 
                 throw new InvalidGradesException("Your are not eligible , CGPA is below 7.5");
             else 
                 System.out.println("applied");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        } finally{
-            System.out.println("applied");
-        }
+        // } catch (Exception e) {
+        //     System.out.println(e.getMessage());
+        // } finally{
+        //     System.out.println("applied");
+        // }
     }
     public static void main(String[] args) {
         try {
